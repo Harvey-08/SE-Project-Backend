@@ -9,6 +9,7 @@ import { setupWSConnection, setPersistence } from 'y-websocket/bin/utils';
 import Canvas from './models/Canvas.js';
 import authRoutes from './routes/authRoutes.js';
 import canvasRoutes from './routes/canvasRoutes.js';
+import snapshotRoutes from './routes/snapshotRoutes.js';
 
 dotenv.config();
 
@@ -22,6 +23,7 @@ app.use(express.json());
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/canvas', canvasRoutes);
+app.use('/api/snapshots', snapshotRoutes);
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/Canvas')
