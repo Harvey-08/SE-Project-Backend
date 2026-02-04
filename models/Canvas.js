@@ -17,8 +17,15 @@ const canvasSchema = new mongoose.Schema({
         required: true,
     },
     members: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+        user: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        },
+        role: {
+            type: String,
+            enum: ['editor', 'viewer'],
+            default: 'viewer'
+        }
     }],
     documentState: {
         type: Buffer, // Stores the binary Yjs update
