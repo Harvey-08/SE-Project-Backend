@@ -16,6 +16,10 @@ const canvasSchema = new mongoose.Schema({
         ref: 'User',
         required: true,
     },
+    members: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+    }],
     documentState: {
         type: Buffer, // Stores the binary Yjs update
         default: null,

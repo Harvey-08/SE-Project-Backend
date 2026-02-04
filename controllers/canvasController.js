@@ -44,7 +44,12 @@ export const getCanvas = async (req, res) => {
 // @access  Private
 export const getMyCanvases = async (req, res) => {
     try {
-        const canvases = await Canvas.find({ owner: req.user._id }).sort({ createdAt: -1 });
+        const canvases = await Canvas.find({
+            $or: [
+                { owner: req.user._id },
+                { members: req.user._id }
+            ]
+        }).sort({ updatedAt: -1 });
         res.json(canvases);
     } catch (error) {
         res.status(500).json({ message: error.message });
