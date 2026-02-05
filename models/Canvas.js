@@ -1,19 +1,27 @@
 import mongoose from 'mongoose';
 
-const CanvasSchema = new mongoose.Schema({
-  canvasId: { 
-    type: String, 
-    required: true, 
-    unique: true 
-  },
-  documentState: { 
-    type: Buffer, // Binary data of the Yjs document
-    required: false
-  },
-  lastModified: { 
-    type: Date, 
-    default: Date.now 
-  }
-});
+const canvasSchema = new mongoose.Schema({
+    canvasId: {
+        type: String,
+        required: true,
+        unique: true,
+    },
+    name: {
+        type: String,
+        required: true,
+        default: 'Untitled Canvas',
+    },
+    owner: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true,
+    },
+    documentState: {
+        type: Buffer, // Stores the binary Yjs update
+        default: null,
+    },
+}, { timestamps: true });
 
-export const Canvas = mongoose.model('Canvas', CanvasSchema);
+const Canvas = mongoose.model('Canvas', canvasSchema);
+
+export default Canvas;
