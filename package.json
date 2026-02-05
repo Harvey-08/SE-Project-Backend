@@ -19,6 +19,7 @@
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.1.5",
     "nodemon": "^3.1.11",
+    "uuid": "^13.0.0",
     "ws": "^8.19.0",
     "y-websocket": "^3.0.0",
     "yjs": "^13.6.29"

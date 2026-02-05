@@ -1,6 +1,6 @@
 import Canvas from '../models/Canvas.js';
 import User from '../models/User.js';
-import { v4 as uuidv4 } from 'uuid'; // We might need to install uuid or just use random string
+import { v4 as uuidv4 } from 'uuid';
 
 // @desc    Create a new canvas
 // @route   POST /api/canvas/create
@@ -9,7 +9,7 @@ export const createCanvas = async (req, res) => {
     const { name } = req.body;
 
     try {
-        const canvasId = Math.random().toString(36).substring(2, 9); // Simple ID generation
+        const canvasId = uuidv4();
 
         const canvas = await Canvas.create({
             canvasId,
